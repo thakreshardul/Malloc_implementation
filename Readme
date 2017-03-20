@@ -1,0 +1,30 @@
+
+
+This is a simple implementation of malloc, free, calloc, realloc.
+
+Instructions to run:
+run the make file
+
+Known bugs/errors:
+1. The testing filet-test1.c throws a segmentation fault. I am still looking
+   into the issue.
+
+
+Implementation details:
+1. I had tried 3 different models and all the implementations threw segfaults.
+
+a. I had taken arena as a struct which would store PAGE info.
+b. In second model I had changed arena to just a (void *) as I could not understand the 
+   the correct usage of TLS. I had implemented two lists here -- freelist and used list.
+   which were initialised as a pointer to a block. But since, I could not store the
+   values for intermediate pointers that were created, I had to scrap this model.
+c. I tried writing the strcut block_t to the newly allocated memory and just maintaining
+   the start addressof the memory in a list. But due to too many memcpy calls I had to
+   scrap this model as well.
+
+Lastly, I had implemented this model that I am submitting. It's very different from what I
+had working last night. I had a subtle implementation with pointer and a proper linked list
+implemented. It worked with both the cases test.c and t-test1.c
+But it somehow started throwing segfault when I started to implement buddy allocation.
+
+I will get the previous solution working and upload it to Github.       
